@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.SelectRoleFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linear_layout"
+        android:gravity = "center">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="182dp"
+            android:src="@drawable/ic_add_album"
+            android:layout_marginTop="1mm"/>
+
+        <TextView
+            android:id="@+id/txtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seleccione su Rol:"
+            android:textSize = "12dp" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/txtView"/>
+
+        <Button
+            android:id="@+id/btnIngresar"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:text="Ingresar"
+            android:onClick="OnClick"
+            tools:ignore="OnClick" />
+
+
+    </LinearLayout>
+
+</FrameLayout>

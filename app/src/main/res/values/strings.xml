@@ -30,4 +30,11 @@
 
     <string name="options_item_call">Llamar</string>
     <string name="options_item_website">Ir al sition web</string>
+
+    <string-array name="Languages">
+        <item>Coleccionista</item>
+        <item>Visitante</item>
+    </string-array>
+
+    <string name="title_albums">Albums</string>
 </resources>
