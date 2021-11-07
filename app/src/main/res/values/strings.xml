@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Vinilos App</string>
+    <string name="search_hint">Nombre álbum</string>
+    <string name="no_results">No se encontraron resultados 😓</string>
+    <string name="album_img">album_artwork</string>
+    <string name="album_tracks_title">Album Tracks</string>
+    <string name="album_details_title">Detalle Álbum</string>
+
+</resources>
