@@ -9,7 +9,8 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.vinilosapp.models.Album
+import com.example.vinilosapp.data.model.Album
+import com.example.vinilosapp.data.model.AlbumDetails
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -36,7 +37,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 val list = mutableListOf<Album>()
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
-                    list.add(i, Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description")))
+                    list.add(i, Album(idAlbum = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description")))
                 }
                 onComplete(list)
             },
@@ -45,18 +46,18 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-   fun getAlbumDetail(albumId:Int, onComplete:(resp:List<Album>)->Unit, onError: (error:VolleyError)->Unit) {
+   fun getAlbumDetail(albumId:Int, onComplete:(resp:List<AlbumDetails>)->Unit, onError: (error:VolleyError)->Unit) {
        requestQueue.add(getRequest("albums/$albumId",
            { response ->
                val resp = JSONObject(response)
-               val list = mutableListOf<Album>()
+               val list = mutableListOf<AlbumDetails>()
                var item:JSONObject? = null
             //   for (i in 0 until resp.length()) {
               //     item = resp.getJSONObject(i)
                    Log.d("Response", resp.toString())
-                   list.add(0, Album(albumId = albumId, name = resp.getString("name").toString(), cover = resp.getString("cover").toString(),  releaseDate = resp.getString("releaseDate").toString(), description = resp.getString("description").toString(), genre = resp.getString("genre").toString(),  recordLabel = resp.getString("recordLabel").toString()))
+                   list.add(0, AlbumDetails(idAlbum = albumId, name = resp.getString("name").toString(), cover = resp.getString("cover").toString(),  releaseDate = resp.getString("releaseDate").toString(), description = resp.getString("description").toString(), genre = resp.getString("genre").toString(),  recordLabel = resp.getString("recordLabel").toString()))
              //  }
-               Log.d("Lista",list[0].description)
+               Log.d("Lista", list[0].description.toString())
                onComplete(list)
            },
            {
@@ -73,4 +74,5 @@ class NetworkServiceAdapter constructor(context: Context) {
     private fun putRequest(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ):JsonObjectRequest{
         return  JsonObjectRequest(Request.Method.PUT, BASE_URL+path, body, responseListener, errorListener)
     }
+
 }
