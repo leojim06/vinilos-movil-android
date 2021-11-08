@@ -21,3 +21,6 @@
 * [Data binding](https://developer.android.com/jetpack/androidx/releases/databinding) de componentes en diseños y fuentes de datos.
 * Soporte sin conexión a medida que los datos se guardan en la base de datos sql light usando [ROOM](https://developer.android.com/topic/libraries/architecture/room)
 
+### Escenarios de prueba E2E
+* Para la ejecución de las pruebas debe dirigirse a la sección com.example.vinilosapp(androidTest) --> presentation.vm --> AlbumSearchViewModelTest, clic derecho sobre el archivo y seleccionar la opción Run 'AlbumSearchViewModelTest..'
+* Para la ejecución de las pruebas debe dirigirse a la sección com.example.vinilosapp(androidTest) --> ui --> SearchListInstrumentedTest, clic derecho sobre el archivo y seleccionar la opción Run 'SearchListInstrumentedTest..'
