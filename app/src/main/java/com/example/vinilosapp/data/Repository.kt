@@ -1,20 +1,20 @@
 package com.example.vinilosapp.data
 
-import android.app.Application
+import android.util.Log
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.android.volley.VolleyError
+import com.example.vinilosapp.data.api.VinilosApiService
 import com.example.vinilosapp.data.database.LocalCache
 import com.example.vinilosapp.data.model.*
-import com.example.vinilosapp.network.NetworkServiceAdapter
 import kotlinx.coroutines.*
+import org.json.JSONArray
 
 /**
  * Repository class to enforce data single source of truth
  *
  * **/
-class Repository(val application: Application, private val cache: LocalCache) {
+class Repository(private val service :VinilosApiService, private val cache: LocalCache) {
 
     lateinit var albumListData: LiveData<List<Album>>
 
@@ -36,31 +36,32 @@ class Repository(val application: Application, private val cache: LocalCache) {
     // Load search results from remote or save to local database
     private fun listAlbums(query: String) = runBlocking {
         async {
-            refreshData( {
+            remoteAlbumSearch(query, {
                 cache.removeAlbumsByQuery(query)
                 cache.insertAlbum(it)
                 albumListData = cache.albumsByQuery(query)
                 _networkErrors.postValue("")
             }, { error ->
                 albumListData = cache.albumsByQuery(query)
-                _networkErrors.postValue(error.toString())
+                _networkErrors.postValue(error)
             })
         }.await()
     }
 
     // Load album details from remote or save to local database
-     /*fun albumDetails(idAlbum: Int){
+     fun albumDetails(album: Int){
         CoroutineScope(Dispatchers.IO).launch {
             // Fetch cached album details
-            val cachedAlbums= cache.albumsByMid(idAlbum)
+            val cachedAlbums= cache.albumsByMid(album)
             CoroutineScope(Dispatchers.Main).launch {
                 albumDetails.value = cachedAlbums
             }
 
-            remoteAlbumDetails(idAlbum)
+            if (cachedAlbums == null){
+                remoteAlbumDetails(album)
+            }
         }
     }
-    */
 
 
     /**
@@ -68,26 +69,56 @@ class Repository(val application: Application, private val cache: LocalCache) {
      * @param queryString
      * **/
     @WorkerThread
-    fun refreshData(callback: (List<Album>)->Unit, onError: (VolleyError)->Unit) {
-        //Determinar la fuente de datos que se va a utilizar. Si es necesario consultar la red, ejecutar el siguiente código
-        NetworkServiceAdapter.getInstance(application).getAlbums({
-            //Guardar los albumes de la variable it en un almacén de datos local para uso futuro
-            callback(it)
-        },
-            onError
-        )
+    suspend fun remoteAlbumSearch(queryString: String,
+                                  onSuccess: (results: List<Album>) ->Unit,
+                                  onError: (error: String) -> Unit){
+        try {
+            val response  = service.searchAlbum()
+            Log.d("Response111", response.toString())
+            //val remoteData = response.body()?.results?.albummatches?.album ?: emptyList()
+
+            val resp = JSONArray(response.body())
+
+            val list = mutableListOf<Album>()
+            Log.d("Response222", resp.length().toString())
+
+            for (i in 0 until resp.length()) {
+                val item = response.body()?.get(i)
+                if (item != null) {
+                    list.add(i, Album(id = item.id,name = item.name, cover = item.cover, recordLabel = item.recordLabel, releaseDate = item.releaseDate, genre = item.genre, description = item.description))
+                }
+            }
+
+            onSuccess(list)
+        }catch (exception : Exception){
+            exception.message?.let {
+                onError(it)
+            }
+        }
+
     }
 
 
     @WorkerThread
-    suspend fun remoteAlbumDetails(albumId: Int, callback: (List<AlbumDetails>)->Unit, onError: (VolleyError)->Unit) {
-        //Determinar la fuente de datos que se va a utilizar. Si es necesario consultar la red, ejecutar el siguiente código
-        NetworkServiceAdapter.getInstance(application).getAlbumDetail(albumId,{
-            //Guardar los coleccionistas de la variable it en un almacén de datos local para uso futuro
-            callback(it)
-        },
-            onError
-        )
+    suspend fun remoteAlbumDetails(album: Int){
+        try {
+            val response  = service.getAlbumDetails(album)
+            val remoteDetailsData = response.body()?.album
+            remoteDetailsData?.let {
+                cache.insertAlbumDetails(it)
+                CoroutineScope(Dispatchers.Main).launch {
+                    albumDetails.value = it
+                }
+            }
+            _networkErrors.postValue("")
+        }catch (exception : Exception){
+            exception.message?.let {
+                CoroutineScope(Dispatchers.Main).launch {
+                    _networkErrors.value = it
+                }
+            }
+        }
+
     }
 
 }

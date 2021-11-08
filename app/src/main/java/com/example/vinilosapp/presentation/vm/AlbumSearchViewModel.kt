@@ -12,7 +12,7 @@ import com.example.vinilosapp.data.model.AlbumSearchResults
 /**
  * ViewModel class to serve as a bridge between our repository and UI
  * **/
-class SearchViewModel(private val repository: Repository) :ViewModel() {
+class AlbumSearchViewModel(private val repository: Repository) :ViewModel() {
 
     private val queryLiveData = MutableLiveData<String>()
 
@@ -31,7 +31,7 @@ class SearchViewModel(private val repository: Repository) :ViewModel() {
     /**
      * Query album search data from [Repository]
      * **/
-    fun searchAlbums(query: String){
+    fun     searchAlbums(query: String){
         queryLiveData.postValue(query)
     }
 

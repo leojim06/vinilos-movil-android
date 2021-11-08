@@ -9,8 +9,7 @@ import com.example.vinilosapp.R
 import com.example.vinilosapp.ui.factory.AlbumsFragmentFactory
 import kotlinx.android.synthetic.main.activity_main.*
 
-
-class MainActivity : AppCompatActivity() {
+class  MainActivity : AppCompatActivity() {
 
     private val navHostFragment by lazy {
         supportFragmentManager.findFragmentById(R.id.nav_holder) as NavHostFragment

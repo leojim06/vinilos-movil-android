@@ -26,13 +26,13 @@ interface AlbumsDao {
     /**
      * Select cached [AlbumDetails]
      * **/
-    @Query("Select * from album_details where idAlbum = :mbid")
+    @Query("Select * from album_details where id = :mbid")
     fun albumByMid(mbid: Int): AlbumDetails
 
     /**
      * Select cached [Album] list
      * **/
-    @Query("SELECT * FROM albums WHERE name LIKE :queryString ORDER BY name ASC")
+    @Query("SELECT * FROM albums WHERE name LIKE :queryString ORDER BY id ASC")
     fun resultsByQuery(queryString: String): LiveData<List<Album>>
 
     /**

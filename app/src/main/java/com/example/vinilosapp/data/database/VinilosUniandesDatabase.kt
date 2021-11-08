@@ -9,9 +9,8 @@ import com.example.vinilosapp.data.model.Album
 import com.example.vinilosapp.data.model.AlbumDetails
 
 @Database(entities = [Album::class, AlbumDetails::class], version = 1, exportSchema = false)
-//@TypeConverters(Converters::class)
-
-abstract class LastFmDatabase: RoomDatabase() {
+@TypeConverters(Converters::class)
+abstract class VinilosUniandesDatabase: RoomDatabase() {
 
     /** [VideosDao] instance  **/
     abstract fun albumsDao(): AlbumsDao
@@ -22,9 +21,9 @@ abstract class LastFmDatabase: RoomDatabase() {
     companion object{
 
         @Volatile
-        private var INSTANCE: LastFmDatabase? = null
+        private var INSTANCE: VinilosUniandesDatabase? = null
 
-        fun getInstance(context : Context): LastFmDatabase =
+        fun getInstance(context : Context): VinilosUniandesDatabase =
             INSTANCE ?: synchronized(this){
                 INSTANCE ?: buildDatabase(context).also {
                     INSTANCE = it
@@ -33,7 +32,7 @@ abstract class LastFmDatabase: RoomDatabase() {
 
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(context.applicationContext,
-                LastFmDatabase::class.java, "LASTFM.db")
+                VinilosUniandesDatabase::class.java, "VinilosUniandes.db")
                 .build()
     }
 }

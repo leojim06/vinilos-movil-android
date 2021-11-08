@@ -11,5 +11,5 @@ import com.example.vinilosapp.R
  */
 @BindingAdapter("imageUrl")
 fun loadImage(imageView: ImageView, image : String){
-    Glide.with(imageView.context).load(image).placeholder(R.drawable.ic_add_album).into(imageView)
+    Glide.with(imageView.context).load(image).placeholder(R.drawable.last_fm).into(imageView)
 }

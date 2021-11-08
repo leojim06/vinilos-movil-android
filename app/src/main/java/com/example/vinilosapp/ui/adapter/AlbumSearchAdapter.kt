@@ -7,7 +7,7 @@ import com.example.vinilosapp.data.model.Album
 /**
  * Adapter for the list of search results.
  */
-class SearchAdapter(private val navigate: (Album) -> Unit): RecyclerView.Adapter<AlbumViewHolder>() {
+class AlbumSearchAdapter(private val navigate: (Album) -> Unit): RecyclerView.Adapter<AlbumViewHolder>() {
 
     private var dataList = listOf<Album>()
 

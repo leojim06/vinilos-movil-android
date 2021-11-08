@@ -14,17 +14,15 @@ data class AlbumDetailsResults (
 @Entity(tableName = "album_details")
 data class AlbumDetails (
     @PrimaryKey(autoGenerate = true)
-    val idAlbum : Int,
+    val id : Int,
     val name: String?,
     val cover: String?,
     val releaseDate: String?,
     val description: String?,
     val genre: String?,
     val recordLabel: String?,
-    //@Embedded
-    //val tracks: Tracks?,
-    //@Embedded
-    //val performers: Wiki?
+    @Embedded
+    val tracks: Tracks?
 )
 
 data class Tracks (

@@ -7,12 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.vinilosapp.R
 import com.example.vinilosapp.data.model.Album
-import com.example.vinilosapp.databinding.SearchItemBinding
+import com.example.vinilosapp.databinding.AlbumSearchItemBinding
 
 /**
  * View holder to display recycler view list data
  * **/
-class AlbumViewHolder(binding: SearchItemBinding, val navigateToDetail: (Album) -> Unit) : RecyclerView.ViewHolder(binding.root) {
+class AlbumViewHolder(binding: AlbumSearchItemBinding, val navigateToDetail: (Album) -> Unit) : RecyclerView.ViewHolder(binding.root) {
 
     private val albumNameTxt = binding.albumTitleTxt
     private val artistNameTxt = binding.artistNameTxt
@@ -22,7 +22,7 @@ class AlbumViewHolder(binding: SearchItemBinding, val navigateToDetail: (Album) 
     fun bindData(album: Album){
         albumNameTxt.text = album.name
         artistNameTxt.text = album.genre
-        Glide.with(albumArtwork.context).load(album.cover).placeholder(R.drawable.ic_add_album).into(albumArtwork)
+        Glide.with(albumArtwork.context).load(album.cover).placeholder(R.drawable.last_fm).into(albumArtwork)
 
         /**
          * Navigate to details screen
@@ -38,7 +38,7 @@ class AlbumViewHolder(binding: SearchItemBinding, val navigateToDetail: (Album) 
          * Singleton access to [VideoViewHolder] returning inflated view
          * **/
         fun create(parent: ViewGroup, navigate: (Album) -> Unit): AlbumViewHolder {
-            val binding = SearchItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val binding = AlbumSearchItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return AlbumViewHolder(binding, navigate)
         }
     }

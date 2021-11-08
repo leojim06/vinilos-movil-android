@@ -15,24 +15,22 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.vinilosapp.Utilities.PrefsHelper
 import com.example.vinilosapp.Utilities.hideKeyboard
-import com.example.vinilosapp.application.LastFMApplication
+import com.example.vinilosapp.application.VinilosUniandesApplication
 import com.example.vinilosapp.data.model.Album
-import com.example.vinilosapp.databinding.FragmentSearchBinding
+import com.example.vinilosapp.databinding.FragmentAlbumSearchBinding
 import com.example.vinilosapp.presentation.vm.AlbumDetailsViewModel
-import com.example.vinilosapp.presentation.vm.SearchViewModel
-import com.example.vinilosapp.ui.adapter.SearchAdapter
-import com.ijikod.lastfm.ui.fragments.SearchFragmentDirections
+import com.example.vinilosapp.presentation.vm.AlbumSearchViewModel
+import com.example.vinilosapp.ui.adapter.AlbumSearchAdapter
 
 
 /**
  * Fragment to show Album list data
  * **/
-class SearchFragment: Fragment() {
+class AlbumSearchFragment: Fragment() {
 
-    private lateinit var viewModel: SearchViewModel
-    private lateinit var adapter : SearchAdapter
+    private lateinit var viewModelAlbum: AlbumSearchViewModel
+    private lateinit var adapterAlbum : AlbumSearchAdapter
     private lateinit var searchList : RecyclerView
     private lateinit var emptyText : TextView
     private lateinit var searchTextField : EditText
@@ -42,8 +40,8 @@ class SearchFragment: Fragment() {
         super.onCreate(savedInstanceState)
 
         // get the view model
-        viewModel = ViewModelProvider(requireActivity(), LastFMApplication.provideViewModelFactory(requireContext()))
-            .get(SearchViewModel::class.java)
+        viewModelAlbum = ViewModelProvider(requireActivity(), VinilosUniandesApplication.provideViewModelFactory(requireContext()))
+            .get(AlbumSearchViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -51,15 +49,16 @@ class SearchFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentSearchBinding.inflate(inflater, container, false)
+        val binding = FragmentAlbumSearchBinding.inflate(inflater, container, false)
 
         initScreenItems(binding)
         initAdapter()
         initSearch()
+        updateAlbumSearchListFromInputEmpty()
         return binding.root
     }
 
-    private fun initScreenItems(binding: FragmentSearchBinding){
+    private fun initScreenItems(binding: FragmentAlbumSearchBinding){
         // Initialise screen views
         searchList = binding.list
         emptyText = binding.emptyList
@@ -69,22 +68,22 @@ class SearchFragment: Fragment() {
 
     private fun initAdapter() {
         // Initialise search adapter for  recycle view
-        adapter = SearchAdapter {
+        adapterAlbum = AlbumSearchAdapter {
             navigate(it)
         }
 
         // Assign adapter to recycler view
-        searchList.adapter = adapter
+        searchList.adapter = adapterAlbum
 
         // Subscribe to data changes in view model to show Album search results
-        viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
+        viewModelAlbum.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
             Log.d("Activity", "list: ${it?.size}")
             showEmptyList(it?.size == 0)
-            adapter.setDataSet(it)
+            adapterAlbum.setDataSet(it)
         })
 
         // Subscribe to data changes in view model to show network errors
-        viewModel.networkErrors.observe(viewLifecycleOwner, Observer<String> {
+        viewModelAlbum.networkErrors.observe(viewLifecycleOwner, Observer<String> {
             Log.d("Search", it)
             if (it.isNotEmpty()){
                 Toast.makeText(requireContext(), "\uD83D\uDE28 Wooops $it", Toast.LENGTH_LONG).show()
@@ -125,10 +124,23 @@ class SearchFragment: Fragment() {
         searchTextField.text.trim().let {
             if (it.isNotEmpty()) {
                 searchList.scrollToPosition(0)
-                viewModel.searchAlbums(it.toString())
-                adapter.setDataSet(emptyList())
+                viewModelAlbum.searchAlbums(it.toString())
+                adapterAlbum.setDataSet(emptyList())
             }
         }
+    }
+
+    private fun updateAlbumSearchListFromInputEmpty() {
+        // Hide keyboard after search is triggered
+        //hideKeyboard()
+
+        // Search for album with album name presented in search field
+
+                searchList.scrollToPosition(0)
+                viewModelAlbum.searchAlbums("")
+                adapterAlbum.setDataSet(emptyList())
+
+
     }
 
 
@@ -146,10 +158,10 @@ class SearchFragment: Fragment() {
 
     // Navigate to Album details
     private fun navigate(album: Album){
-        albumDetailsVM = ViewModelProvider(requireActivity(), LastFMApplication.provideViewModelFactory(requireActivity())).get(AlbumDetailsViewModel::class.java)
+        albumDetailsVM = ViewModelProvider(requireActivity(), VinilosUniandesApplication.provideViewModelFactory(requireActivity())).get(AlbumDetailsViewModel::class.java)
         albumDetailsVM.setSelectedAlbum(album)
 
-        val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment()
+        val action = AlbumSearchFragmentDirections.actionSearchFragmentToDetailsFragment()
         findNavController().navigate(action)
     }
 }

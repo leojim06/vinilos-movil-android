@@ -11,16 +11,15 @@ import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.vinilosapp.application.LastFMApplication
-import com.example.vinilosapp.data.model.Album
+import com.example.vinilosapp.application.VinilosUniandesApplication
 import com.example.vinilosapp.data.model.AlbumDetails
-import com.example.vinilosapp.databinding.FragmentDetailsBinding
+import com.example.vinilosapp.databinding.FragmentAlbumDetailsBinding
 import com.example.vinilosapp.presentation.vm.AlbumDetailsViewModel
 
 /**
- * [DetailsFragment] view class to display selected album details
+ * [AlbumDetailsFragment] view class to display selected album details
  * **/
-class DetailsFragment: Fragment() {
+class AlbumDetailsFragment: Fragment() {
 
     lateinit var viewModel : AlbumDetailsViewModel
     lateinit var progressBar: ProgressBar
@@ -42,9 +41,9 @@ class DetailsFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        val binding = FragmentAlbumDetailsBinding.inflate(inflater, container, false)
 
-        viewModel = ViewModelProvider(requireActivity(), LastFMApplication.provideViewModelFactory(requireActivity()))
+        viewModel = ViewModelProvider(requireActivity(), VinilosUniandesApplication.provideViewModelFactory(requireActivity()))
             .get(AlbumDetailsViewModel::class.java)
         binding.vm = viewModel
 
@@ -54,7 +53,7 @@ class DetailsFragment: Fragment() {
     }
 
     // Initialise page views
-    private fun initPage(binding: FragmentDetailsBinding){
+    private fun initPage(binding: FragmentAlbumDetailsBinding){
         progressBar = binding.loadingProgress
         albumName = binding.nameTxt
         albumArtist = binding.artistTxt
@@ -77,7 +76,6 @@ class DetailsFragment: Fragment() {
         albumName.text = albumDetails.name
         albumArtist.text = albumDetails.description
 
-        /*
         if (albumDetails.tracks?.track.isNullOrEmpty().not()){
             tracksTitle.visibility = View.VISIBLE
             albumTracks.text = albumDetails.tracks?.track?.joinToString {
@@ -85,17 +83,13 @@ class DetailsFragment: Fragment() {
             }
         }
 
-        albumDetails.wiki?.summary?.let {
-            albumWiki.text = HtmlCompat.fromHtml(it, HtmlCompat.FROM_HTML_MODE_LEGACY)
-        }
 
-         */
     }
 
 
     // Listen on event changes from viewModel
     private fun subscribeToDataChanges(){
-        //viewModel.getAlbumDetails()
+        viewModel.getAlbumDetails()
         viewModel.albumsDetails.observe(viewLifecycleOwner, Observer {
             showDetails()
             it?.let {

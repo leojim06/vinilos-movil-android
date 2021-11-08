@@ -7,7 +7,7 @@
     app:startDestination="@id/searchFragment">
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.ijikod.lastfm.ui.fragments.SearchFragment"
+        android:name="com.example.vinilosapp.ui.fragments.AlbumSearchFragment"
         android:label="@string/app_name" >
         <action
             android:id="@+id/action_searchFragment_to_detailsFragment"
@@ -15,6 +15,6 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.ijikod.lastfm.ui.fragments.DetailsFragment"
+        android:name="com.example.vinilosapp.ui.fragments.AlbumDetailsFragment"
         android:label="@string/album_details_title" />
 </navigation>
