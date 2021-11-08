@@ -3,6 +3,7 @@ package com.example.vinilosapp.ui.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilosapp.data.model.Album
+import java.util.*
 
 /**
  * Adapter for the list of search results.

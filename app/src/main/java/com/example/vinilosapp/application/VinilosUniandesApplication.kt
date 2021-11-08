@@ -2,13 +2,12 @@ package com.example.vinilosapp.application
 
 import android.app.Application
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilosapp.Utilities.PrefsHelper
 import com.example.vinilosapp.data.Repository
 import com.example.vinilosapp.data.api.RetrofitInstance
-import com.example.vinilosapp.data.database.VinilosUniandesDatabase
 import com.example.vinilosapp.data.database.LocalCache
+import com.example.vinilosapp.data.database.VinilosUniandesDatabase
 import com.example.vinilosapp.presentation.factory.ViewModelFactory
 import java.util.concurrent.Executors
 
