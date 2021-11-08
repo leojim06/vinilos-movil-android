@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/hector.arias/AndroidStudioProjects/VinilosApp/app/src/main/res/drawable/states_cb_favorite.xml" value="0.22552083333333334" />
-        <entry key="..\:/Users/hector.arias/AndroidStudioProjects/VinilosApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/hector.arias/AndroidStudioProjects/VinilosApp/app/src/main/res/layout/item_list_album.xml" value="0.25" />
+        <entry key="..\:/Music-Album-Search-master/app/src/main/res/layout/fragment_details.xml" value="0.19322916666666667" />
+        <entry key="..\:/Music-Album-Search-master/app/src/main/res/layout/search_item.xml" value="0.1" />
+        <entry key="..\:/VinilosAppUniAndes/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/VinilosAppUniAndes/app/src/main/res/layout/fragment_album_details.xml" value="0.11822916666666666" />
+        <entry key="..\:/VinilosAppUniAndes/app/src/main/res/layout/fragment_details.xml" value="0.1515625" />
+        <entry key="..\:/VinilosAppUniAndes/app/src/main/res/layout/search_item.xml" value="0.1515625" />
+        <entry key="..\:/VinilosAppUniAndes/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>
     </option>
   </component>
