@@ -9,7 +9,7 @@
 ### Instalación de la aplicación
 * Clonar Repositorio usando Android Studio.
 * Android Studio le pedirá que cambie la ruta de su sdk de Android a su máquina local.
-* Asegúrese de estar en la rama ** master ** y permita que Android Studio termine de compilar.
+* Asegúrese de estar en la rama **main** y permita que Android Studio termine de compilar.
 * Ejecutar aplicación
 
 ### Documentación Api
