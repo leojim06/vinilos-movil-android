@@ -1,17 +1,18 @@
 package com.example.vinilosapp.data.api
 
 import android.content.Context
-import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilosapp.data.model.Collector
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter constructor(context: Context) {
     companion object {
@@ -30,33 +31,26 @@ class NetworkServiceAdapter constructor(context: Context) {
         Volley.newRequestQueue(context.applicationContext)
     }
 
-    fun getCollectors(
-        onComplete: (resp: List<Collector>) -> Unit,
-        onError: (error: VolleyError) -> Unit
-    ) {
+    suspend fun getCollectors() = suspendCoroutine<List<Collector>> { cont ->
         requestQueue.add(
             getRequest("collectors",
-                Response.Listener<String> { response ->
-                    Log.d("tagb", response)
+                { response ->
                     val resp = JSONArray(response)
                     val list = mutableListOf<Collector>()
-                    for (i in 0 until resp.length()) {
+                    for (i in 0 until resp.length()) { //inicializado como variable de retorno
                         val item = resp.getJSONObject(i)
-                        list.add(
-                            i,
-                            Collector(
-                                collectorId = item.getInt("id"),
-                                name = item.getString("name"),
-                                telephone = item.getString("telephone"),
-                                email = item.getString("email")
-                            )
+                        val collector = Collector(
+                            collectorId = item.getInt("id"),
+                            name = item.getString("name"),
+                            telephone = item.getString("telephone"),
+                            email = item.getString("email")
                         )
+                        list.add(collector) //se agrega a medida que se procesa la respuesta
                     }
-                    onComplete(list)
+                    cont.resume(list)
                 },
-                Response.ErrorListener {
-                    onError(it)
-                    Log.d("", it.message.toString())
+                {
+                    cont.resumeWithException(it)
                 })
         )
     }
