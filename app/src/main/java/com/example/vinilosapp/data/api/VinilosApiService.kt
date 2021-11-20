@@ -3,6 +3,8 @@ package com.example.vinilosapp.data.api
 import com.example.vinilosapp.data.model.Album
 import com.example.vinilosapp.data.model.AlbumDetailsResults
 import com.example.vinilosapp.data.model.AlbumResults
+import com.example.vinilosapp.data.model.ArtistDetailsResults
+import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -27,4 +29,10 @@ interface VinilosApiService{
     suspend fun getAlbumDetails(@Query("album") album: Int) : Response<AlbumDetailsResults>
 
 
+    /**
+     * Get [ArtistDetailsResults] from selected
+     * @param artistId
+     */
+    @GET("artistId")
+    suspend fun getArtistDetails(@Query("artistId") artistId: Int): Response<ArtistDetailsResults>
 }

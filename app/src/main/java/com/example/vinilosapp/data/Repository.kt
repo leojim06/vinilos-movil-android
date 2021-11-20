@@ -19,6 +19,7 @@ class Repository(private val service :VinilosApiService, private val cache: Loca
     lateinit var albumListData: LiveData<List<Album>>
 
     val albumDetails = MutableLiveData<AlbumDetails>()
+    val artistDetails = MutableLiveData<ArtistDetails>()
 
     private val _networkErrors = MutableLiveData<String>()
 
@@ -63,6 +64,17 @@ class Repository(private val service :VinilosApiService, private val cache: Loca
         }
     }
 
+    // Load artists details from remote or save to lacal database
+    fun artistDetails(artistId: Int){
+        CoroutineScope(Dispatchers.IO).launch {
+            // Todo: Add cache from artist dao
+            val cachedArtists = null
+
+            if(cachedArtists == null){
+                remoteArtistDetails(artistId)
+            }
+        }
+    }
 
     /**
      * Get albums data from remote
@@ -118,7 +130,27 @@ class Repository(private val service :VinilosApiService, private val cache: Loca
                 }
             }
         }
+    }
 
+    @WorkerThread
+    suspend fun remoteArtistDetails(artistId: Int){
+        try {
+            val response = service.getArtistDetails(artistId)
+            val remoteDetailsData = response.body()?.artist
+            remoteDetailsData?.let {
+                // Todo: Add artist to cache
+                CoroutineScope(Dispatchers.Main).launch {
+                    artistDetails.value = it
+                }
+            }
+            _networkErrors.postValue("")
+        } catch (exception: Exception){
+            exception.message?.let {
+                CoroutineScope(Dispatchers.Main).launch {
+                    _networkErrors.value = it
+                }
+            }
+        }
     }
 
 }

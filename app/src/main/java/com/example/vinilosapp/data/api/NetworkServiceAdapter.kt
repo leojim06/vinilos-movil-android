@@ -30,6 +30,8 @@ class NetworkServiceAdapter constructor(context: Context) {
         Volley.newRequestQueue(context.applicationContext)
     }
 
+
+
     val stringRequest = StringRequest(
         Request.Method.GET,
         BASE_URL+"albums",

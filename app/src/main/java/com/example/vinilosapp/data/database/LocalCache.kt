@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Query
 import com.example.vinilosapp.data.model.Album
 import com.example.vinilosapp.data.model.AlbumDetails
+import com.example.vinilosapp.data.model.ArtistDetails
 import java.util.concurrent.Executor
 
 /**
