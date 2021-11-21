@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MISO/04_Semestre/ing-sw-aplicaciones-moviles/vinilos-movil-android/app/src/main/res/layout/fragment_album_details.xml" value="0.1" />
+        <entry key="..\:/MISO/04_Semestre/ing-sw-aplicaciones-moviles/vinilos-movil-android/app/src/main/res/layout/fragment_artist_details.xml" value="0.22" />
+        <entry key="..\:/MISO/04_Semestre/ing-sw-aplicaciones-moviles/vinilos-movil-android/app/src/main/res/layout/fragment_test.xml" value="0.22760416666666666" />
         <entry key="..\:/Music-Album-Search-master/app/src/main/res/layout/fragment_details.xml" value="0.19322916666666667" />
         <entry key="..\:/Music-Album-Search-master/app/src/main/res/layout/search_item.xml" value="0.1" />
         <entry key="..\:/VinilosAppUniAndes/app/src/main/res/layout/activity_main.xml" value="0.22" />

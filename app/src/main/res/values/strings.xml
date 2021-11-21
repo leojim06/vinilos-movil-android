@@ -6,5 +6,6 @@
     <string name="album_tracks_title">Album Tracks</string>
     <string name="album_details_title">Detalle Álbum</string>
     <string name="artist_details_title">Detalle Artista</string>
-
+    <string name="artist_details_image">artist_artwork</string>
+    
 </resources>

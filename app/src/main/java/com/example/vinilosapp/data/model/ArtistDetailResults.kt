@@ -17,18 +17,18 @@ data class Artist(
     val id: Int = 0
 )
 
-@Entity(tableName = "artist_details")
+// @Entity(tableName = "artist_details")
 data class ArtistDetails(
-    @PrimaryKey(autoGenerate = true)
+    //@PrimaryKey(autoGenerate = true)
     val id: Int,
     val name: String?,
     val image: String?,
     var description: String?,
     var birthDate: String?,
-    @Embedded
-    var albums: Albumes?,
-    @Embedded
-    var performerPrizes: Prizes?
+    //@Embedded
+    //var albums: Albumes?,
+    //@Embedded
+    //var performerPrizes: Prizes?
 )
 
 data class Albumes(

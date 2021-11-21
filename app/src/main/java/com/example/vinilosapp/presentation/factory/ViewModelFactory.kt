@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.vinilosapp.data.Repository
 import com.example.vinilosapp.presentation.vm.AlbumDetailsViewModel
 import com.example.vinilosapp.presentation.vm.AlbumSearchViewModel
+import com.example.vinilosapp.presentation.vm.ArtistDetailsViewModel
 
 class ViewModelFactory (private val repository: Repository) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -14,6 +15,9 @@ class ViewModelFactory (private val repository: Repository) : ViewModelProvider.
         }else if (modelClass.isAssignableFrom(AlbumDetailsViewModel::class.java)){
             @Suppress("UNCHECKED_CAST")
             return AlbumDetailsViewModel(repository) as T
+        }else if (modelClass.isAssignableFrom(ArtistDetailsViewModel::class.java)){
+            @Suppress("UNCHECKED_CAST")
+            return ArtistDetailsViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

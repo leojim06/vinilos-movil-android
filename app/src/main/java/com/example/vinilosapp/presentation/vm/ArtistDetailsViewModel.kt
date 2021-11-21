@@ -1,5 +1,6 @@
 package com.example.vinilosapp.presentation.vm
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.vinilosapp.data.Repository
@@ -16,9 +17,13 @@ class ArtistDetailsViewModel(private val repository: Repository): ViewModel() {
     }
 
     fun getArtistDetails() {
-        selectedArtist.value?.let {
+        Log.d("Artist View Model log", "100")
+        repository.artistDetails(100)
+
+        /**selectedArtist.value?.let {
             // repository.artistDetails(it.id)
+            Log.d("Artist View Model log", "100")
             repository.artistDetails(100)
-        }
+        }*/
     }
 }

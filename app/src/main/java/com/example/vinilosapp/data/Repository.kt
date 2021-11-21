@@ -115,6 +115,8 @@ class Repository(private val service :VinilosApiService, private val cache: Loca
     suspend fun remoteAlbumDetails(album: Int){
         try {
             val response  = service.getAlbumDetails(album)
+            Log.d("Artist detail URL", response.toString())
+
             val remoteDetailsData = response.body()?.album
             remoteDetailsData?.let {
                 cache.insertAlbumDetails(it)
@@ -135,12 +137,16 @@ class Repository(private val service :VinilosApiService, private val cache: Loca
     @WorkerThread
     suspend fun remoteArtistDetails(artistId: Int){
         try {
+            Log.d("Response artist detail", artistId.toString())
             val response = service.getArtistDetails(artistId)
-            val remoteDetailsData = response.body()?.artist
+            Log.d("Response artist detail", response.toString())
+            Log.d("Response artist body", response.body().toString())
+            val remoteDetailsData = response.body()
             remoteDetailsData?.let {
                 // Todo: Add artist to cache
                 CoroutineScope(Dispatchers.Main).launch {
                     artistDetails.value = it
+                    Log.d("Get artist detail", it.name.toString())
                 }
             }
             _networkErrors.postValue("")

@@ -1,11 +1,13 @@
 package com.example.vinilosapp.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -21,6 +23,9 @@ class ArtistDetailsFragment : Fragment() {
 
     lateinit var viewModel : ArtistDetailsViewModel
     lateinit var progressBar: ProgressBar
+    lateinit var artistName: TextView
+    lateinit var artistDescription: TextView
+    lateinit var artistBirthDate: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,21 +48,29 @@ class ArtistDetailsFragment : Fragment() {
     }
 
     private fun initPage(binding: FragmentArtistDetailsBinding){
-        binding.loadingProgress
-        binding.artistTxt
+        progressBar = binding.loadingProgress
+        artistName = binding.nameTxt
+        artistDescription = binding.descriptionTxt
+        artistBirthDate = binding.birthdateTxt
     }
 
     private fun showDetails() {
         progressBar.visibility = View.INVISIBLE
+        artistName.visibility = View.VISIBLE
+        artistDescription.visibility = View.VISIBLE
+        artistBirthDate.visibility = View.VISIBLE
     }
 
     private fun showArtistsDetails(artistDetails: ArtistDetails){
-
+        artistName.text = artistDetails.name
+        artistDescription.text = artistDetails.description
+        artistBirthDate.text = artistDetails.birthDate
     }
 
 
     private fun subscribeToDataChanges(){
         viewModel.getArtistDetails()
+        Log.d("View Model Artist data", viewModel.selectedArtist.toString())
         viewModel.artistsDetails.observe(viewLifecycleOwner, Observer {
             showDetails()
             it?.let {

@@ -12,9 +12,16 @@
         <action
             android:id="@+id/action_searchFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_artistDetailsFragment"
+            app:destination="@id/artistDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.vinilosapp.ui.fragments.AlbumDetailsFragment"
         android:label="@string/album_details_title" />
+    <fragment
+        android:id="@+id/artistDetailsFragment"
+        android:name="com.example.vinilosapp.ui.fragments.ArtistDetailsFragment"
+        android:label="ArtistDetailsFragment" />
 </navigation>
