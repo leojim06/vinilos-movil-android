@@ -16,7 +16,6 @@ class DetailAdapter(private val albumDetail: AlbumResponse) {
             .into(binding.imageView2)
         binding.textContentDate.text = formatDate(albumDetail.releaseDate)
         binding.textContentGenre.text = albumDetail.genre
-        binding.textContentRecord.text = albumDetail.recordLabel
         binding.textContentDescription.text = albumDetail.description
     }
 

@@ -21,8 +21,6 @@ class DetailArtistAdapter(private val artistDetail: ArtistResponse, private val 
         binding.textContentDate.text =
             if (isBand) formatDate(artistDetail.creationDate) else formatDate(artistDetail.birthDate)
         binding.textContentDescription.text = artistDetail.description
-        binding.listTexAlbums.text = adaptStringAbums(binding)
-
 
     }
 

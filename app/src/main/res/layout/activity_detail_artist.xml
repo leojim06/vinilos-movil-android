@@ -48,41 +48,28 @@
                 tools:srcCompat="@tools:sample/avatars"
                 android:contentDescription="@string/detail_artist_description_image" />
 
-            <TextView
-                android:id="@+id/textLabelArtist"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:text="@string/artist_name_label"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewArtist" />
 
             <TextView
                 android:id="@+id/textContentArtist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
                 android:textColor="@color/black"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textLabelArtist"
-                app:layout_constraintStart_toEndOf="@+id/textLabelArtist"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="164dp"
+                tools:layout_editor_absoluteY="65dp"
                 tools:text="Name Artists" />
-
 
             <TextView
                 android:id="@+id/textLabelDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
                 android:text="@string/artist_date_label"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textLabelArtist" />
+                tools:layout_editor_absoluteY="285dp"
+                tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/textContentDate"
@@ -101,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="12dp"
                 android:text="@string/description_label"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -123,52 +110,15 @@
                 tools:text="Descripcion orem ipsum dolor sit amet consectetur adipiscing elit himenaeos nunc dictum, lacus sed penatibus tempor fringilla sociis posuere curabitur semper, ornare nisi conubia habitasse dignissim congue varius tempus suspendisse. Eleifend torquent praesent leo porta et lacinia a, ridiculus molestie odio iaculis montes luctus nullam, enim malesuada aliquet eget nisl arcu. Rhoncus senectus aliquam id convallis ligula auctor orci suscipit, pharetra cubilia mi mollis porttitor quisque platea nec lobortis, euismod proin gravida sem sapien bibendum hendrerit. Laoreet tortor velit vulputate nam dis eros fames massa, maecenas duis felis magnis lectus pellentesque vitae parturient quis, mattis vivamus venenatis eu purus in class. " />
 
             <TextView
-                android:id="@+id/textLabelAlbums"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:text="@string/artist_albums_label"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textContentDescription" />
-
-            <TextView
-                android:id="@+id/listTexAlbums"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textLabelAlbums"
-                tools:text="TextView"
-                />
-
-            <TextView
-                android:id="@+id/textLabelPrizes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/artist_prizes_label"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/listTexAlbums" />
-
-            <TextView
                 android:id="@+id/listTexPrizes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textLabelPrizes"
+                tools:layout_editor_absoluteY="702dp"
                 tools:text="TextView"
-                />
+                tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
