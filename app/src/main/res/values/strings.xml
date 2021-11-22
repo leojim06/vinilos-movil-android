@@ -18,5 +18,6 @@
     <string name="search_hint">Nombre álbum</string>
     <string name="search_artista">Nombre artista</string>
     <string name="search_coleccionista">Nombre coleccionista</string>
+    <string name="crear_Album">Crear álbum</string>
     <string name="no_results">No se encontraron resultados 😓</string>
 </resources>
