@@ -58,7 +58,7 @@ class CollectorListFragment : Fragment() {
                     }
                     Status.LOADING -> {
                         binding.progressBarCollector.visibility = View.VISIBLE
-                        binding.recyclerViewCollector.visibility = View.GONE
+                        binding.    recyclerViewCollector.visibility = View.GONE
                     }
                 }
             }

@@ -119,38 +119,16 @@
                 tools:text="Pop Rock Latino " />
 
             <TextView
-                android:id="@+id/textLabelRecord"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:text="@string/record_label"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textContentGenre" />
-
-            <TextView
-                android:id="@+id/textContentRecord"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/black"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textLabelRecord"
-                app:layout_constraintStart_toEndOf="@+id/textLabelRecord"
-                tools:text="Uniandes Disc" />
-
-            <TextView
                 android:id="@+id/textLabelDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
                 android:text="@string/description_label"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textLabelRecord" />
+                tools:layout_editor_absoluteY="436dp"
+                tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/textContentDescription"

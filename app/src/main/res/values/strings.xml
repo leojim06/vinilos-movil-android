@@ -12,7 +12,11 @@
     <string name="detail_album_description_image">Imagen del detalle del album</string>
     <string name="detail_artist_description_image">Imagen del detalle del artista</string>
     <string name="item_layout_description_image">Imagen del artista,album o coleccionista</string>
-    <string name="menu_album__label">Albums</string>
-    <string name="menu_artist_label">Artists</string>
-    <string name="menu_collector_label">Collectors</string>
+    <string name="menu_album__label">Álbumes</string>
+    <string name="menu_artist_label">Artistas</string>
+    <string name="menu_collector_label">Coleccionistas</string>
+    <string name="search_hint">Nombre álbum</string>
+    <string name="search_artista">Nombre artista</string>
+    <string name="search_coleccionista">Nombre coleccionista</string>
+    <string name="no_results">No se encontraron resultados 😓</string>
 </resources>
