@@ -1,9 +1,18 @@
 <resources>
     <string name="app_name">Vinilos App</string>
-    <string name="search_hint">Nombre álbum</string>
-    <string name="no_results">No se encontraron resultados 😓</string>
-    <string name="album_img">album_artwork</string>
-    <string name="album_tracks_title">Album Tracks</string>
-    <string name="album_details_title">Detalle Álbum</string>
-
+    <string name="artist_label">Artista:</string>
+    <string name="date_label">Fecha de lanzamiento:</string>
+    <string name="genre_label">Género:</string>
+    <string name="record_label">Compañia Discografica:</string>
+    <string name="description_label">Descripción:</string>
+    <string name="artist_name_label">Artista:</string>
+    <string name="artist_date_label">Fecha:</string>
+    <string name="artist_albums_label">Albumes:</string>
+    <string name="artist_prizes_label">Premios:</string>
+    <string name="detail_album_description_image">Imagen del detalle del album</string>
+    <string name="detail_artist_description_image">Imagen del detalle del artista</string>
+    <string name="item_layout_description_image">Imagen del artista,album o coleccionista</string>
+    <string name="menu_album__label">Albums</string>
+    <string name="menu_artist_label">Artists</string>
+    <string name="menu_collector_label">Collectors</string>
 </resources>
