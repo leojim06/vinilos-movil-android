@@ -1,8 +1,8 @@
 package com.example.vinilosapp.repositories
 
 import android.app.Application
-import com.example.vinilosapp.data.api.NetworkServiceAdapter
 import com.example.vinilosapp.data.model.Collector
+import com.example.vinilosapp.network.NetworkServiceAdapter
 
 class CollectorsRepository(val application: Application) {
     suspend fun refreshData(): List<Collector> {

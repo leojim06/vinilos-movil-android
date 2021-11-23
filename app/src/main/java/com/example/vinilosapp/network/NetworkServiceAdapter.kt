@@ -1,4 +1,4 @@
-package com.example.vinilosapp.data.api
+package com.example.vinilosapp.network
 
 import android.content.Context
 import com.android.volley.Request
