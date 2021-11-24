@@ -31,7 +31,7 @@ class CollectorListTest {
     fun collectorListTest() {
         val bottomNavigationItemView = onView(
             allOf(
-                withId(R.id.action_books), withContentDescription("Coleccionistas"),
+                withId(R.id.action_books), withContentDescription(R.string.menu_collector_label),
                 childAtPosition(
                     childAtPosition(
                         withId(R.id.bottom_navigation_view),
