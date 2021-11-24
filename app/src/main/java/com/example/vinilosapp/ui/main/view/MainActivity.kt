@@ -17,6 +17,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -26,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         setupActionBarWithNavController(navController)
+        binding.bottomNavigationView.menu.getItem(0)
+       setFragment(AlbumListFragment.newInstance())
+
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
