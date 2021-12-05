@@ -36,6 +36,11 @@
             android:parentActivityName=".ui.main.view.MainActivity"
             android:theme="@style/Theme.VinilosApp.NoActionBar" />
         <activity
+            android:name=".ui.main.view.DetailCollectorActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.main.view.MainActivity"
+            android:theme="@style/Theme.VinilosApp.NoActionBar" />
+        <activity
             android:name=".ui.main.view.MainActivity"
             android:exported="true">
             <intent-filter>

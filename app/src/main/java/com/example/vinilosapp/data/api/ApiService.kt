@@ -24,6 +24,9 @@ interface ApiService {
     @GET("collectors")
     suspend fun getCollectors(): List<CollectorResponse>
 
+    @GET("collectors/{id}")
+    suspend fun getCollectorDetail(@Path("id") id: String): CollectorResponse
+
     @GET("musicians/{id}")
     suspend fun getMusiciansDetail(@Path("id") id: String): ArtistResponse
 
