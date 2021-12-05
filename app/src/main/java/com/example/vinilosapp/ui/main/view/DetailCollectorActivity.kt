@@ -8,12 +8,12 @@ import com.example.vinilosapp.data.api.ApiHelper
 import com.example.vinilosapp.data.api.RetrofitBuilder
 import com.example.vinilosapp.data.model.CollectorResponse
 import com.example.vinilosapp.databinding.ActivityDetailCollectorBinding
+import com.example.vinilosapp.ui.base.CollectorViewModelFactory
 import com.example.vinilosapp.ui.base.ViewModelFactory
+import com.example.vinilosapp.ui.main.adapter.COLLECTOR_ID
 import com.example.vinilosapp.ui.main.adapter.DetailCollectorAdapter
 import com.example.vinilosapp.ui.main.viewmodel.CollectorViewModel
 import com.example.vinilosapp.utils.Status
-
-const val ID = "id"
 
 class DetailCollectorActivity : AppCompatActivity() {
 
@@ -31,7 +31,7 @@ class DetailCollectorActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val id = intent.getStringExtra(ID)!!
+        val id = intent.getStringExtra(COLLECTOR_ID)!!
 
         setupViewModel()
         setupObservers(id)
@@ -40,7 +40,7 @@ class DetailCollectorActivity : AppCompatActivity() {
     private fun setupViewModel() {
         collectorViewModel = ViewModelProviders.of(
             this,
-            ViewModelFactory(ApiHelper(RetrofitBuilder.apiService))
+            CollectorViewModelFactory(ApiHelper(RetrofitBuilder.apiService))
         )[CollectorViewModel::class.java]
     }
 
