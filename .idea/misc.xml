@@ -5,6 +5,11 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.16666666666666666" />
         <entry key="../../Library/Android/sdk/platforms/android-31/data/res/layout/list_content.xml" value="0.1515625" />
+        <entry key="..\:/MISO/04_Semestre/ing-sw-aplicaciones-moviles/vinilos-movil-android/app/src/main/res/layout/activity_detail_album.xml" value="0.33" />
+        <entry key="..\:/MISO/04_Semestre/ing-sw-aplicaciones-moviles/vinilos-movil-android/app/src/main/res/layout/activity_detail_artist.xml" value="0.5" />
+        <entry key="..\:/MISO/04_Semestre/ing-sw-aplicaciones-moviles/vinilos-movil-android/app/src/main/res/layout/activity_detail_collector.xml" value="0.33" />
+        <entry key="..\:/MISO/04_Semestre/ing-sw-aplicaciones-moviles/vinilos-movil-android/app/src/main/res/layout/activity_splash_screen.xml" value="0.36666666666666664" />
+        <entry key="..\:/MISO/04_Semestre/ing-sw-aplicaciones-moviles/vinilos-movil-android/app/src/main/res/layout/item_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Maestria_Coursera/Materias/misw4203-ingenieria-de-software-para-aplicaciones-moviles/proyecto_vinilos/vinilos-movil-android/app/src/main/res/drawable/ic_baseline_album_24.xml" value="0.19270833333333334" />
         <entry key="..\:/Maestria_Coursera/Materias/misw4203-ingenieria-de-software-para-aplicaciones-moviles/proyecto_vinilos/vinilos-movil-android/app/src/main/res/drawable/ic_collector.xml" value="0.19270833333333334" />
         <entry key="..\:/Maestria_Coursera/Materias/misw4203-ingenieria-de-software-para-aplicaciones-moviles/proyecto_vinilos/vinilos-movil-android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19270833333333334" />

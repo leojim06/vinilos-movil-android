@@ -21,5 +21,8 @@
     <string name="search_coleccionista">Nombre coleccionista</string>
     <string name="crear_Album">Crear álbum</string>
     <string name="no_results">No se encontraron resultados 😓</string>
+    <string name="detail_collector_name">Nombre:</string>
+    <string name="detail_collector_phone">Telefono:</string>
+    <string name="detail_collector_email">Email:</string>
 
 </resources>
