@@ -52,6 +52,7 @@ class AlbumListFragment : Fragment() {
                     Status.ERROR -> {
                         binding.recyclerView.visibility = View.VISIBLE
                         binding.progressBar.visibility = View.GONE
+                        println(resource)
                         Toast.makeText(this.context, it.message, Toast.LENGTH_LONG).show()
                     }
                     Status.LOADING -> {
