@@ -21,5 +21,13 @@
     <string name="search_coleccionista">Nombre coleccionista</string>
     <string name="crear_Album">Crear álbum</string>
     <string name="no_results">No se encontraron resultados 😓</string>
-
+    <!-- Strings relacionados con formulario de creación de álbum -->
+    <string name="prompt_album_name">Nombre</string>
+    <string name="prompt_album_cover">Carátula</string>
+    <string name="action_album_create">Crear</string>
+    <string name="action_album_create_short">Crear</string>
+    <string name="form_create_album_title">Crear Álbum</string>
+    <string name="prompt_album_release_date">Fecha Publicación</string>
+    <string name="prompt_album_description">Descripción</string>
+    <string name="prompt_album_record">Sello Discográfico</string>
 </resources>

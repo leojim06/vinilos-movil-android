@@ -4,9 +4,8 @@ package com.example.vinilosapp.data.api
 import com.example.vinilosapp.data.model.AlbumResponse
 import com.example.vinilosapp.data.model.ArtistResponse
 import com.example.vinilosapp.data.model.CollectorResponse
-
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.Call
+import retrofit2.http.*
 
 interface ApiService {
     @GET("albums")
@@ -14,6 +13,10 @@ interface ApiService {
 
     @GET("albums/{id}")
     suspend fun getAlbumDetail(@Path("id") id: String): AlbumResponse
+
+    @FormUrlEncoded
+    @POST("albums")
+    suspend fun createAlbum(@Body album: AlbumResponse): Call<AlbumResponse>
 
     @GET("musicians")
     suspend fun getMusicians(): List<ArtistResponse>
