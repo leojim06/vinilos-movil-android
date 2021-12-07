@@ -17,4 +17,13 @@ class CollectorViewModel(private val CollectorRepository: CollectorRepository) :
             emit(Resource.error(data = null, msg = exception.message ?: "Un error ha ocurrido!"))
         }
     }
+
+    fun getCollectorDetail(id: String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = CollectorRepository.getCollectorDetail(id)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, msg = exception.message ?: "Un error ha ocurrido!"))
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.vinilosapp.ui.main.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import com.example.vinilosapp.ui.base.ViewModelFactory
 import com.example.vinilosapp.ui.main.adapter.MainAdapter
 import com.example.vinilosapp.ui.main.viewmodel.MainViewModel
 import com.example.vinilosapp.utils.Status
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /**
  * A simple [Fragment] subclass.
@@ -52,6 +54,7 @@ class AlbumListFragment : Fragment() {
                     Status.ERROR -> {
                         binding.recyclerView.visibility = View.VISIBLE
                         binding.progressBar.visibility = View.GONE
+                        println(resource)
                         Toast.makeText(this.context, it.message, Toast.LENGTH_LONG).show()
                     }
                     Status.LOADING -> {
@@ -77,10 +80,25 @@ class AlbumListFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentAlbumListBinding.inflate(layoutInflater, container, false)
         setupUI()
+        bindMenuEvents()
         setupViewModel()
         setupObservers()
         return binding.root
     }
+
+    private fun bindMenuEvents(){
+        val createAlbumMenuButton: FloatingActionButton = binding.fab
+        createAlbumMenuButton.setOnClickListener { view ->
+            launchAlbumCreateActivity(view)
+        }
+
+    }
+
+    private fun launchAlbumCreateActivity(view: View) {
+        val intent = Intent(activity, CreateAlbumActivity::class.java)
+        startActivity(intent)
+    }
+
 
     companion object {
         /**

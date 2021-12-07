@@ -21,7 +21,6 @@ import com.example.vinilosapp.R
 import com.example.vinilosapp.ui.main.view.MainActivity
 import org.hamcrest.Description
 import org.hamcrest.Matcher
-import org.hamcrest.Matchers
 import org.hamcrest.TypeSafeMatcher
 import org.junit.Rule
 import org.junit.Test
