@@ -27,6 +27,7 @@ class DetailAdapter(private val albumDetail: AlbumResponse) {
     }
 
 
+
     private fun formatDate(date: String?): String {
         val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
         val formatter = SimpleDateFormat("dd-MM-yyyy")
