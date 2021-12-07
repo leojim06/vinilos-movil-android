@@ -4,8 +4,11 @@ package com.example.vinilosapp.data.api
 import com.example.vinilosapp.data.model.AlbumResponse
 import com.example.vinilosapp.data.model.ArtistResponse
 import com.example.vinilosapp.data.model.CollectorResponse
+import com.google.gson.JsonObject
+import retrofit2.http.Body
 
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface ApiService {
@@ -32,4 +35,13 @@ interface ApiService {
 
     @GET("bands/{id}")
     suspend fun getBandsDetail(@Path("id") id: String): ArtistResponse
+
+    @GET("collectors/{id}")
+    suspend fun getCollectorsDetail(@Path("id") id: String): CollectorResponse
+
+    @POST("albums/{id}/tracks")
+    suspend fun postAlbumTrack(@Path("id") id: String, @Body track: JsonObject): AlbumResponse
+
+    @POST("albums")
+    suspend fun postAlbum(@Body album: JsonObject): AlbumResponse
 }

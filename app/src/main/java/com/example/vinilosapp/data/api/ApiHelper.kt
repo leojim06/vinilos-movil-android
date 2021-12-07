@@ -1,5 +1,7 @@
 package com.example.vinilosapp.data.api
 
+import com.google.gson.JsonObject
+
 
 class ApiHelper(private val apiService: ApiService) {
 
@@ -11,4 +13,6 @@ class ApiHelper(private val apiService: ApiService) {
     suspend fun getMusiciansDetail(id: String) = apiService.getMusiciansDetail(id)
     suspend fun getCollectors() = apiService.getCollectors()
     suspend fun getCollectorDetail(id: String) = apiService.getCollectorDetail(id)
+    suspend fun postAlbumTrack(id:String, track: JsonObject) = apiService.postAlbumTrack(id,track)
+    suspend fun postAlbum(album: JsonObject) = apiService.postAlbum(album)
 }

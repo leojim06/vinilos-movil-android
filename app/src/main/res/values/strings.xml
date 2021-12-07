@@ -24,5 +24,33 @@
     <string name="detail_collector_name">Nombre:</string>
     <string name="detail_collector_phone">Telefono:</string>
     <string name="detail_collector_email">Email:</string>
-
+    <string name="sub_menu_album_options">Agregar Canción</string>
+    <string name="tracks_label">Canciones:</string>
+    <string name="form_name_song">Nombre Canción</string>
+    <string name="form_song_min">min</string>
+    <string name="add_song">Agregar Canción</string>
+    <string name="submit_add_album_btn">Click para crear un nuevo album</string>
+    <string name="form_add_name_album">Nombre Album</string>
+    <string name="form_add_name_url_cover">URL cover imágen</string>
+    <string name="form_add_genero_album">Genero</string>
+    <string name="form_add_record_album">Record Label</string>
+    <string name="orm_add_description_album">Descripción</string>
+    <string name="release_date">Fecha creación</string>
+    <string name="orm_add_date_album">Fecha creación (dd/MM/yyyy)</string>
+    <string name="label_create_album_instruction">Completa todos los campos</string>
+    <string name="add_album">Crear Album</string>
+    <string name="form_song_seg">seg</string>
+    <string-array name="list_generos">
+        <item>Classical</item>
+        <item>Folk</item>
+        <item>Rock</item>
+        <item>Salsa</item>
+    </string-array>
+    <string-array name="list_records">
+        <item>Sony Music</item>
+        <item>EMI</item>
+        <item>Discos Fuentes</item>
+        <item>Elektra</item>
+        <item>Fania Records</item>
+    </string-array>
 </resources>

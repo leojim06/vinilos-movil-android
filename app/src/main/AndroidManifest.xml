@@ -41,6 +41,16 @@
             android:parentActivityName=".ui.main.view.MainActivity"
             android:theme="@style/Theme.VinilosApp.NoActionBar" />
         <activity
+            android:name=".ui.main.view.AlbumTrackActivity"
+            android:parentActivityName=".ui.main.view.DetailAlbumActivity"
+            android:theme="@style/Theme.VinilosApp.NoActionBar" />
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.view.CreateAlbumActivity"
+            android:parentActivityName=".ui.main.view.MainActivity"
+            android:theme="@style/Theme.VinilosApp.NoActionBar" />
+            android:exported="false" />
+        <activity
             android:name=".ui.main.view.MainActivity"
             android:exported="true">
             <intent-filter>
