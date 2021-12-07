@@ -14,7 +14,7 @@ class AlbumResponse {
     var cover: String? = null
 
     @SerializedName("releaseDate")
-    var releaseDate = Date()
+    var releaseDate: String? = null
 
     @SerializedName("description")
     var description: String? = null

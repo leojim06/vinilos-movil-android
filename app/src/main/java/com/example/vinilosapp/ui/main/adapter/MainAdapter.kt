@@ -44,13 +44,10 @@ class MainAdapter(
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         holder.bindPar.root.setOnClickListener {
-            //Log.d("hola"," mundo")
             val intent = Intent(context, DetailAlbumActivity::class.java).apply {
                 putExtra(ID, albums[position].id.toString())
             }
-
             context.startActivity(intent)
-
         }
 
         holder.bind(albums[position])
