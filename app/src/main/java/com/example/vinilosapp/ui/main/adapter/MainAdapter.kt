@@ -12,6 +12,8 @@ import com.example.vinilosapp.databinding.ItemLayoutBinding
 import com.example.vinilosapp.ui.main.view.DetailAlbumActivity
 
 const val ID = "id"
+const val NAME = "name"
+
 
 class MainAdapter(
     private val albums: ArrayList<AlbumResponse>
@@ -44,10 +46,14 @@ class MainAdapter(
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         holder.bindPar.root.setOnClickListener {
+            //Log.d("hola"," mundo")
             val intent = Intent(context, DetailAlbumActivity::class.java).apply {
                 putExtra(ID, albums[position].id.toString())
+                putExtra(NAME, albums[position].name)
             }
+
             context.startActivity(intent)
+
         }
 
         holder.bind(albums[position])
